@@ -1,0 +1,21 @@
+{% extends 'base.html'%}
+
+{% block title %}Survey Questions{% endblock %}
+
+{% block content %}
+
+{% for msg in get_flashed_messages() %}
+    <p class="invalid">{{msg}}</p>
+{% endfor %}
+
+<p class="question">{{question_text}}</p>
+
+<form action="/answer">
+    {% for choice in choices %}
+    <input type="radio" id="{{choice}}" name="choice" value="{{choice}}">
+    <label>{{choice}}</label><br>
+    {% endfor %}
+    <button type="submit">Submit</button>
+</form>
+
+{% endblock %}
